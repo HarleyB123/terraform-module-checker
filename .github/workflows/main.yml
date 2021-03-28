@@ -17,6 +17,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           msg: "hi! ${{ steps.foo.outputs.MESSAGE }}"
-          check_for_duplicate_msg: true
+          check_for_duplicate_msg: false
 
 
