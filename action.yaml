@@ -7,5 +7,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/terraform_module_checker.sh
+    - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }}
       shell: bash
