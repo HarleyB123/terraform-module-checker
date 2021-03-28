@@ -1,0 +1,11 @@
+name: 'Terraform Module Version Checker'
+description: 'Checks the latest version of a Terraform Module'
+inputs:
+  working_directory:  # working directory relative to root of the repository
+    description: 'working directory relative to root of the repository'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/terraform_module_checker.sh
+      shell: bash
