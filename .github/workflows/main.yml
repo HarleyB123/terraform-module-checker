@@ -8,6 +8,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: hashicorp/setup-terraform@v1
     - id: foo
-      uses: actions/terraform-module-checker@v1
+      uses: actions/terraform-module-checker@v0.0.1
       with:
         working_directory: '.'
