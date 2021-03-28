@@ -18,3 +18,5 @@ jobs:
       with:
           msg: "hi! ${{ steps.module.outputs.MESSAGE }}"
           check_for_duplicate_msg: true
+
+
