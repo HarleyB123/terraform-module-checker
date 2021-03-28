@@ -14,3 +14,5 @@ runs:
     - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }}
       shell: bash
       id: module
+    - name: Check the output from My action
+      run: echo "${{ steps.module.outputs.MESSAGE }}"
