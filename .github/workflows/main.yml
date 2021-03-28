@@ -11,3 +11,10 @@ jobs:
       uses: HarleyB123/terraform-module-checker@v0.0.3
       with:
         working_directory: '.'
+    - name: comment PR
+      uses: unsplash/comment-on-pr@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          msg: "${{ steps.foo.outputs.MESSAGE }}"
+          check_for_duplicate_msg: true
