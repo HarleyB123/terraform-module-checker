@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ORANGE='\u001b[31;1m'
-cd ${{ inputs.working_directory }}
+WORKING_DIRECTORY=$1
+cd $1
 sed -i 's/\?ref.*/"/' *.tf
 terraform get -update
 if [ -d ".terraform/modules" ]
