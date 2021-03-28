@@ -15,4 +15,5 @@ runs:
       shell: bash
       id: module
     - name: Check the output from My action
+      shell: bash
       run: echo "${{ steps.module.outputs.MESSAGE }}"
