@@ -15,6 +15,7 @@ then
       cd ..
     done
     echo "::set-output name=MESSAGE::$(echo -e "${MESSAGE}")"
+    echo -e "${MESSAGE}"
 else
     echo "::set-output name=MESSAGE::$(echo -e "${ORANGE} INFO - No modules found in code")"
 fi
