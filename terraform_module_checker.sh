@@ -12,11 +12,12 @@ then
       cd $dir
       if [ -d ".git" ]
       then
-          MESSAGE="${MESSAGE} INFO - The latest version of module ${dir#./} is tag $(git describe --always --tags --abbrev=0). Please ensure you are using this version.\n"
+          MESSAGE=$"${MESSAGE} INFO - The latest version of module ${dir#./} is tag $(git describe --always --tags --abbrev=0). Please ensure you are using this version.\n"
           echo "::set-output name=MESSAGE::"${MESSAGE}""
           cd ..
       else
-          MESSAGE="${MESSAGE} WARNING - Unable to get tag for module ${dir#./}."
+          MESSAGE=$"${MESSAGE} WARNING - Unable to get tag for module ${dir#./}.\n"
+          echo "::set-output name=MESSAGE::"${MESSAGE}""
       fi
     done
 else
