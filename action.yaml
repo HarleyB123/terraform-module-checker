@@ -1,5 +1,9 @@
 name: 'Terraform Module Version Checker'
 description: 'Checks the latest version of a Terraform Module'
+outputs:
+  message:
+    description: "Output Message"
+    value: ${{ steps.module.outputs.MESSAGE }}
 inputs:
   working_directory:  # working directory relative to root of the repository
     description: 'working directory relative to root of the repository'
@@ -10,3 +14,6 @@ runs:
     - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }}
       shell: bash
       id: module
+    - name: Check the output from My action
+      shell: bash
+      run: echo "${{ steps.module.outputs.MESSAGE }}"
