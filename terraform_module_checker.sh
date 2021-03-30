@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ORANGE='\u001b[31;1m'
 MESSAGE=''
 WORKING_DIRECTORY=$1
 cd $1
@@ -16,6 +15,6 @@ then
       cd ..
     done
 else
-     echo "::set-output name=MESSAGE::echo -e "${ORANGE} INFO - No modules found in code""
+    echo "::set-output name=MESSAGE::$(echo -e "INFO - No modules found in code")"
 fi
 
