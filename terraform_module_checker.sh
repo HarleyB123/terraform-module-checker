@@ -17,6 +17,7 @@ then
           cd ..
       else
           MESSAGE="${MESSAGE} WARNING - Unable to get tag for module ${dir#./}."
+      fi
     done
 else
     echo "::set-output name=MESSAGE::$(echo -e "INFO - No modules found in code")"
