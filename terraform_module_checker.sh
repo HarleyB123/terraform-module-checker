@@ -10,11 +10,11 @@ then
     cd .terraform/modules
     find . -maxdepth 1 -mindepth 1 -type d | while read dir; do
       cd $dir
-      MESSAGE="${MESSAGE} INFO - The latest version of module ${dir#./} is $(git describe --always --abbrev=0). Please ensure you are using this version.\n"
+      MESSAGE="${MESSAGE} The latest version of module ${dir#./} is $(git describe --always --abbrev=0). Please ensure you are using this version."
       echo "::set-output name=MESSAGE::$(echo -e "${MESSAGE}")"
       cd ..
     done
 else
-    echo "::set-output name=MESSAGE::$(echo -e "INFO - No modules found in code")"
+    echo "::set-output name=MESSAGE::$(echo -e "No modules found in code")"
 fi
 
