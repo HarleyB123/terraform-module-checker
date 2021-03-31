@@ -10,6 +10,7 @@ then
     cd .terraform/modules
     find . -maxdepth 1 -mindepth 1 -type d | while read dir; do
       cd $dir
+      ls -la
       if [ -d ".git" ]
       then
           MESSAGE="${MESSAGE} The latest version of module ${dir#./} is tag $(git describe --always --tags --abbrev=0). Please ensure you are using this version."
