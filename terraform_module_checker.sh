@@ -3,7 +3,7 @@ set -euo pipefail
 MESSAGE=''
 WORKING_DIRECTORY=$1
 CI_TOKEN=$2
-export GITHUB_TOKEN=${CI_TOKEN}
+echo "https://anything:${CI_TOKEN}@github.com" > ~/.git-credentials
 cd $1
 sed -i 's/\?ref.*/"/' *.tf
 terraform get -update

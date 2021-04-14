@@ -9,7 +9,7 @@ inputs:
     description: 'working directory relative to root of the repository'
     required: true
   GITHUB_TOKEN:
-    description: GitHub Token
+    description: PAT Token
     required: true
 runs:
   using: "composite"
