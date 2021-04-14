@@ -3,7 +3,7 @@ set -euo pipefail
 MESSAGE=''
 WORKING_DIRECTORY=$1
 CI_TOKEN=$2
-echo "https://anything:${CI_TOKEN}@github.com" > ~/.git-credentials
+git config --global url."https://${CI_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 cd $1
 sed -i 's/\?ref.*/"/' *.tf
 terraform get -update
