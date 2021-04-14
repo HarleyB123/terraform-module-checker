@@ -8,10 +8,13 @@ inputs:
   working_directory:  # working directory relative to root of the repository
     description: 'working directory relative to root of the repository'
     required: true
+  GITHUB_TOKEN:
+    description: GitHub Token
+    required: true
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }}
+    - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }} ${{ inputs.GITHUB_TOKEN }}
       shell: bash
       id: module
     - name: Check the output from My action
