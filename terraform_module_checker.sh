@@ -14,7 +14,7 @@ then
       cd $dir
       if [ -d ".git" ]
       then
-          MESSAGE="${MESSAGE} The latest version of module ${dir#./} is tag $(git describe --always --tags --abbrev=0). Please ensure you are using this version."
+          MESSAGE="${MESSAGE} The latest version of module ${dir#./} is tag $(git tag). Please ensure you are using this version."
           echo "::set-output name=MESSAGE::"${MESSAGE}""
           cd ..
       else
