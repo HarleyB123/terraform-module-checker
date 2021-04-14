@@ -12,9 +12,10 @@ then
     cd .terraform/modules
     find . -maxdepth 1 -mindepth 1 -type d | while read dir; do
       cd $dir
+      git pull origin
       if [ -d ".git" ]
       then
-          MESSAGE="${MESSAGE} The latest version of module ${dir#./} is tag $(git tag). Please ensure you are using this version."
+          MESSAGE="${MESSAGE} The latest version of module ${dir#./} is tag $(git describe --always --abbrev=0). Please ensure you are using this version."
           echo "::set-output name=MESSAGE::"${MESSAGE}""
           cd ..
       else
