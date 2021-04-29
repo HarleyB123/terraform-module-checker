@@ -1,19 +1,31 @@
-name: 'Terraform Module Version Checker'
-description: 'Checks the latest version of a Terraform Module'
-outputs:
-  message:
-    description: "Output Message"
-    value: ${{ steps.module.outputs.MESSAGE }}
-inputs:
-  working_directory:  # working directory relative to root of the repository
-    description: 'working directory relative to root of the repository'
-    required: true
-runs:
-  using: "composite"
-  steps:
-    - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }}
-      shell: bash
-      id: module
-    - name: Check the output from My action
-      shell: bash
-      run: echo "${{ steps.module.outputs.MESSAGE }}"
+- name: 'Terraform Module Version Checker'
+  description: 'Checks the latest version of a Terraform Module'
+  outputs:
+    message:
+      description: "Output Message"
+      value: ${{ steps.module.outputs.MESSAGE }}
+  inputs:
+    working_directory:  # working directory relative to root of the repository
+      description: 'working directory relative to root of the repository'
+      required: true
+    GITHUB_TOKEN:
+      description: PAT Token
+      required: true
+  runs:
+    using: "composite"
+    steps:
+      - run: ${{ github.action_path }}/terraform_module_checker.sh ${{ inputs.working_directory }} ${{ inputs.GITHUB_TOKEN }}
+        shell: bash
+        id: module
+      - name: Check the output from My action
+        shell: bash
+        run: echo "${{ steps.module.outputs.MESSAGE }}"
+
+- name: Run Checkov action
+  id: checkov
+  uses: bridgecrewio/checkov-action@master
+  with:
+    directory: /
+    framework: terraform
+    output_format: cli # optional: the output format, one of: cli, json, junitxml, github_failed_only
+          # download_external_modules: true
