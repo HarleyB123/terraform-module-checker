@@ -15,7 +15,7 @@ steps:
   runs:
     using: "composite"
     steps:
-      - run: ${GITHUB_ACTION_PATH}/terraform_module_checker.sh ${{ inputs.working_directory }} ${{ inputs.GITHUB_TOKEN }}
+      - run: ${GITHUB_ACTION_PATH}/terraform_module_checker.sh ${INPUT_WORKING_DIRECTORY} ${INPUT_GITHUB_TOKEN}
         shell: bash
         id: module
         #    - name: Check the output from My action
