@@ -1,4 +1,3 @@
-steps:
 - name: 'Terraform Module Version Checker'
   description: 'Checks the latest version of a Terraform Module'
   #outputs:
